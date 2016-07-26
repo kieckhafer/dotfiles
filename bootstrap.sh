@@ -11,7 +11,7 @@ function doIt() {
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
-		-avh --no-perms . ~;
+		-avh --no-perms . ~/.dotfiles;
 	source ~/.bash_profile;
 }
 
