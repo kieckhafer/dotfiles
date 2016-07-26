@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+# ###########################################################
+# Aliases
+# ###########################################################
+
+
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Show & Hide hidden files in Finder
+alias showFiles="defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app"
+alias hideFiles="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
+
+# Folder shortcuts
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias p="cd ~/Projects"
+
+# Folder navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Copy SSH cert to clipboard
+alias cprsa="pbcopy < ~/.ssh/id_rsa.pub"
+
+# Open / Go-to applications
+alias goatom="open -a 'Atom'"
+alias gochrome="open -a 'Google Chroms'"
+
+# List files
+alias ll="ls -lhA"
+alias ls="ls -CF"
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# Get IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com && ipconfig getifaddr en0"
+
+# Empty the Trash on all mounted volumes and the main HDD.
+# Also, clear Apple’s System Logs to improve shell startup speed.
+# Finally, clear download history from quarantine. https://mths.be/bum
+alias emptytrash="find . -name '*.DS_Store' -type f -ls -delete; sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sudo rm /private/var/vm/sleepimage; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'; echo 'All done!'"
+
+# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+
+## Application Specific
+# Reaction
+alias m="meteor"
+alias mr="meteor reset"
+alias r="reaction"
+alias rr="meteor reset && reaction"
+alias rrr="reaction reset && reaction"
+alias km="ps aux | grep -ie meteor | awk '{print $2}' | xargs kill -9"
+alias tm="VELOCITY_TEST_PACKAGES=1 meteor test-packages --port 3006 --driver-package velocity:html-reporter"
