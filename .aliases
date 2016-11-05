@@ -5,7 +5,6 @@
 # ###########################################################
 
 
-
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
@@ -32,7 +31,7 @@ alias cprsa="pbcopy < ~/.ssh/id_rsa.pub"
 
 # Open / Go-to applications
 alias goatom="open -a 'Atom'"
-alias gochrome="open -a 'Google Chroms'"
+alias gochrome="open -a 'Google Chrome'"
 
 # List files
 alias ll="ls -lhA"
