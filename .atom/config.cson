@@ -1,0 +1,66 @@
+"*":
+  "atom-beautify":
+    css:
+      indent_char: "2"
+      preserve_newlines: true
+    general:
+      _analyticsUserId: "058a6295-be70-4440-896b-712e0a855bec"
+    js:
+      end_with_newline: true
+      keep_array_indentation: true
+      keep_function_indentation: true
+      space_after_anon_function: true
+    json:
+      beautify_on_save: true
+    less:
+      indent_size: 2
+    markdown: {}
+  "autocomplete-plus": {}
+  core:
+    disabledPackages: [
+      "jshint"
+      "react"
+    ]
+    projectHome: "/Users/erik/Projects"
+    telemetryConsent: "limited"
+    themes: [
+      "atom-material-ui"
+      "atom-dark-syntax"
+    ]
+  editor:
+    autoIndentOnPaste: false
+    backUpBeforeSaving: true
+    fontSize: 13
+    invisibles: {}
+    preferredLineLength: 200
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    tabLength: 2
+  "exception-reporting":
+    userId: "5dc40fe1-727a-90ca-924a-3fa1856d3457"
+  "file-icons":
+    onChanges: true
+  "find-and-replace": {}
+  "git-diff":
+    showIconsInEditorGutter: true
+  "highlight-line":
+    enableSelectionBorder: true
+    enableUnderline: true
+    underline: "dotted"
+  linter:
+    showErrorPanel: false
+  minimap: {}
+  "one-dark-ui": {}
+  "php-cs-fixer": {}
+  pigments:
+    extendAutocompleteToColorValue: true
+  "status-bar": {}
+  tabs:
+    usePreviewTabs: true
+  welcome:
+    showOnStartup: false
+".html.php.text":
+  editor:
+    preferredLineLength: 200

@@ -4,7 +4,7 @@
 # Exports
 # ###########################################################
 
-
+export EDITOR="atom -nw"
 
 export PATH=/opt/local/bin:/opt/local/sbin:${PATH}
 # export PATH=/usr/local/bin:$PATH

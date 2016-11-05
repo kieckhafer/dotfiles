@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-21502-fau8n8/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-21502-fau8n8/package.tgz",
+        "spec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-21502-fau8n8/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/apm-install-dir-11688-21502-1ye33kl"
+    ]
+  ],
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/php-cs-fixer.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  },
+  "_from": "../d-11688-21502-fau8n8/package.tgz",
+  "_id": "php-cs-fixer@2.5.9",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/php-cs-fixer",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-21502-fau8n8/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-21502-fau8n8/package.tgz",
+    "spec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-21502-fau8n8/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-11688-21502-fau8n8/package.tgz",
+  "_shasum": "973bb476e5924666d6452812c64723f0950e30f1",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-21502-fau8n8/package.tgz",
+  "_where": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/apm-install-dir-11688-21502-1ye33kl",
+  "author": {
+    "name": "Matthias Pfefferle",
+    "url": "http://pfefferle.org/"
+  },
+  "bugs": {
+    "url": "https://github.com/pfefferle/atom-php-cs-fixer/issues"
+  },
+  "dependencies": {},
+  "description": "Run the 'PHP Coding Standards Fixer' within Atom",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0",
+    "php": ">=5.3.6"
+  },
+  "homepage": "https://github.com/pfefferle/atom-php-cs-fixer",
+  "keywords": [
+    "phpcs",
+    "php",
+    "fixer",
+    "psr",
+    "php-cs"
+  ],
+  "license": "MIT",
+  "main": "./lib/php-cs-fixer",
+  "name": "php-cs-fixer",
+  "optionalDependencies": {},
+  "readme": "# php-cs-fixer Atom-Package\n\nRun the \"[PHP Coding Standards Fixer](http://cs.sensiolabs.org)\" within your Atom Editor\n\n![A screenshot of your package](https://raw.github.com/pfefferle/atom-php-cs-fixer/master/php-cs-fixer.gif)\n\n## Installation\n\n```sh\n$ apm install php-cs-fixer\n```\n\nor find it in the Packages tab under settings\n\n## Requirements\n\nThe package requires the \"[PHP Coding Standards Fixer](http://cs.sensiolabs.org)\" Cli build by [SensioLabs](http://sensiolabs.com).\n\nInstallation via Composer\n\n```sh\n$ ./composer.phar global require fabpot/php-cs-fixer\n```\n\nFor other installation methods, see <http://cs.sensiolabs.org/#installation>\n\n## Usage\n\n`ctrl-cmd-s` or **Php Cs Fixer: Fix** in the Command Palette.\n\n(The commands can also be found in the settings-menu of the Package)\n\n## FAQ\n\n### I have updated the plugin to 2.2.0 and it does not work any more\n\nI had to add a new settings-parameter `Php Executable Path` to get the plugin running on Windows, so be sure to check if the new settings is configured properly.\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pfefferle/atom-php-cs-fixer.git"
+  },
+  "version": "2.5.9"
+}
