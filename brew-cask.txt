@@ -1,0 +1,10 @@
+atom
+dropbox
+firefox
+github
+google-chrome
+iterm2
+sketch
+spotify
+spotify-notifications
+vlc
