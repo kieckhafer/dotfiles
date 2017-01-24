@@ -8,7 +8,7 @@
 // Rule Definition
 //------------------------------------------------------------------------------
 
-var nodeTypes = require("espree").Syntax;
+const nodeTypes = require("espree").Syntax;
 
 module.exports = {
     meta: {
@@ -22,9 +22,7 @@ module.exports = {
             type: "array",
             items: [
                 {
-                    enum: Object.keys(nodeTypes).map(function(k) {
-                        return nodeTypes[k];
-                    })
+                    enum: Object.keys(nodeTypes).map(k => nodeTypes[k])
                 }
             ],
             uniqueItems: true,
@@ -32,7 +30,7 @@ module.exports = {
         }
     },
 
-    create: function(context) {
+    create(context) {
 
         /**
          * Generates a warning from the provided node, saying that node type is not allowed.
@@ -43,7 +41,7 @@ module.exports = {
             context.report(node, "Using '{{type}}' is not allowed.", node);
         }
 
-        return context.options.reduce(function(result, nodeType) {
+        return context.options.reduce((result, nodeType) => {
             result[nodeType] = warn;
 
             return result;

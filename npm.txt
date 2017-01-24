@@ -1,5 +1,2 @@
 grunt
 gulp
-node-static
-surge
-yo

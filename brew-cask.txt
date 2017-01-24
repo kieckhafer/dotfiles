@@ -1,10 +1,10 @@
 atom
 dropbox
 firefox
-github
+github-desktop
 google-chrome
 iterm2
 sketch
+slack
 spotify
-spotify-notifications
 vlc

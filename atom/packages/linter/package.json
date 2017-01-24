@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-22292-1g11lm4/package.tgz",
+        "raw": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-116115-40688-11lrtb2/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-22292-1g11lm4/package.tgz",
-        "spec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-22292-1g11lm4/package.tgz",
+        "rawSpec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-116115-40688-11lrtb2/package.tgz",
+        "spec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-116115-40688-11lrtb2/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/apm-install-dir-11688-22292-1h0qmie"
+      "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/apm-install-dir-116115-40688-orwdf4"
     ]
   ],
-  "_from": "../d-11688-22292-1g11lm4/package.tgz",
-  "_id": "linter@1.11.16",
+  "_from": "../d-116115-40688-11lrtb2/package.tgz",
+  "_id": "linter@1.11.18",
   "_inCache": true,
   "_installable": true,
   "_location": "/linter",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-22292-1g11lm4/package.tgz",
+    "raw": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-116115-40688-11lrtb2/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-22292-1g11lm4/package.tgz",
-    "spec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-22292-1g11lm4/package.tgz",
+    "rawSpec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-116115-40688-11lrtb2/package.tgz",
+    "spec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-116115-40688-11lrtb2/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11688-22292-1g11lm4/package.tgz",
-  "_shasum": "9454b1450762d117b64cfd0ea1d71caaa1ab5d83",
+  "_resolved": "file:../d-116115-40688-11lrtb2/package.tgz",
+  "_shasum": "5169f5a4ac6ac03953a8e100220ef4138250f13e",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/d-11688-22292-1g11lm4/package.tgz",
-  "_where": "/private/var/folders/jw/f23lc8cn30b2v079_284n0pm0000gn/T/apm-install-dir-11688-22292-1h0qmie",
+  "_spec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-116115-40688-11lrtb2/package.tgz",
+  "_where": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/apm-install-dir-116115-40688-orwdf4",
   "author": {
     "name": "atom-community"
   },
@@ -89,5 +89,5 @@
   "scripts": {
     "lint": "coffeelint lib && eslint lib"
   },
-  "version": "1.11.16"
+  "version": "1.11.18"
 }

@@ -19,7 +19,6 @@
   core:
     disabledPackages: [
       "jshint"
-      "react"
     ]
     projectHome: "/Users/erik/Projects"
     telemetryConsent: "limited"
