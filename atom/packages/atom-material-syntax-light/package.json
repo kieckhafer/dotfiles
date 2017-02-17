@@ -1,40 +1,66 @@
 {
-  "name": "atom-material-syntax-light",
-  "theme": "syntax",
-  "version": "0.4.5",
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-117030-14431-z46jdc/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-117030-14431-z46jdc/package.tgz",
+        "spec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-117030-14431-z46jdc/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/apm-install-dir-117030-14431-15cz83h"
+    ]
+  ],
+  "_from": "../d-117030-14431-z46jdc/package.tgz",
+  "_id": "atom-material-syntax-light@0.4.6",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/atom-material-syntax-light",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-117030-14431-z46jdc/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-117030-14431-z46jdc/package.tgz",
+    "spec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-117030-14431-z46jdc/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-117030-14431-z46jdc/package.tgz",
+  "_shasum": "6d5748987d45b664e033e1967083fb53eb725d93",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/d-117030-14431-z46jdc/package.tgz",
+  "_where": "/private/var/folders/zw/lzrf1csj0691ncgztmd613840000gn/T/apm-install-dir-117030-14431-15cz83h",
+  "bugs": {
+    "url": "https://github.com/silvestreh/atom-material-syntax-light/issues"
+  },
+  "dependencies": {},
   "description": "A light syntax theme for Atom that uses Google's Material Design color palette",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.13.0 <2.0.0"
+  },
+  "homepage": "https://github.com/silvestreh/atom-material-syntax-light#readme",
   "keywords": [
     "syntax",
     "theme",
     "material design",
     "material"
   ],
+  "license": "MIT",
+  "name": "atom-material-syntax-light",
+  "optionalDependencies": {},
+  "readme": "![](http://i.imgur.com/f58FC9u.png)\n---\n\nA light variant of [Atom Material Syntax](https://github.com/silvestreh/atom-material-ui) for [Atom Material UI](https://github.com/silvestreh/atom-material-ui). Inspired by Mattia Astorino's [SublimeText theme](https://github.com/equinusocio/material-theme).\n\n![](http://i.imgur.com/HkCKXxX.png)\n",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/silvestreh/atom-material-syntax-light.git"
   },
-  "license": "MIT",
-  "engines": {
-    "atom": ">=1.0.0 <2.0.0"
-  },
-  "readme": "![](http://i.imgur.com/f58FC9u.png)\n---\n\nA light variant of [Atom Material Syntax](https://github.com/silvestreh/atom-material-ui) for [Atom Material UI](https://github.com/silvestreh/atom-material-ui). Inspired by Mattia Astorino's [SublimeText theme](https://github.com/equinusocio/material-theme).\n\n![](http://i.imgur.com/HkCKXxX.png)\n",
-  "readmeFilename": "README.md",
-  "bugs": {
-    "url": "https://github.com/silvestreh/atom-material-syntax-light/issues"
-  },
-  "homepage": "https://github.com/silvestreh/atom-material-syntax-light#readme",
-  "_id": "atom-material-syntax-light@0.4.5",
-  "_shasum": "ba0d281ad84e0e347f52073f8e95291112f113c9",
-  "_resolved": "file:../d-116416-89961-je0rrm/package.tgz",
-  "_from": "../d-116416-89961-je0rrm/package.tgz",
-  "_atomModuleCache": {
-    "version": 1,
-    "dependencies": [],
-    "extensions": {
-      ".json": [
-        "package.json"
-      ]
-    },
-    "folders": []
-  }
+  "theme": "syntax",
+  "version": "0.4.6"
 }

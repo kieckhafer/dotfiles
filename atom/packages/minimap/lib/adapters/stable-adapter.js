@@ -1,9 +1,9 @@
-'use babel'
+'use strict'
 
 /**
  * @access private
  */
-export default class StableAdapter {
+module.exports = class StableAdapter {
   constructor (textEditor) {
     this.textEditor = textEditor
     this.textEditorElement = atom.views.getView(this.textEditor)
@@ -94,11 +94,23 @@ export default class StableAdapter {
       return this.maxScrollTopCache
     }
 
-    let maxScrollTop = this.textEditorElement.getScrollHeight() - this.getHeight()
-    let lineHeight = this.textEditor.getLineHeightInPixels()
+    let maxScrollTop
+    if (this.textEditorElement.getMaxScrollTop) {
+      maxScrollTop = this.textEditorElement.getMaxScrollTop()
 
-    if (this.scrollPastEnd) {
-      maxScrollTop -= this.getHeight() - 3 * lineHeight
+      if (parseFloat(atom.getVersion()) >= 1.13) {
+        if (this.scrollPastEnd) {
+          const lineHeight = this.textEditor.getLineHeightInPixels()
+          maxScrollTop -= this.getHeight() - 3 * lineHeight
+        }
+      }
+    } else {
+      maxScrollTop = this.textEditorElement.getScrollHeight() - this.getHeight()
+
+      if (this.scrollPastEnd) {
+        const lineHeight = this.textEditor.getLineHeightInPixels()
+        maxScrollTop -= this.getHeight() - 3 * lineHeight
+      }
     }
 
     if (this.useCache) {

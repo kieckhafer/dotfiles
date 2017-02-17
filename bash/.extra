@@ -38,3 +38,8 @@ alias egrep='egrep --color=auto'
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
+
+# Add git-completion script into the bash
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi

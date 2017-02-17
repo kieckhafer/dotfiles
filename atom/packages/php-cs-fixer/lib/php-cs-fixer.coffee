@@ -10,38 +10,63 @@ module.exports = PhpCsFixer =
       title: 'PHP executable path'
       type: 'string'
       default: 'php'
-      description: 'the path to the `php` executable'
+      description: 'The path to the `php` executable.'
+      order: 10
     phpArguments:
       title: 'Add PHP arguments'
       type: 'array'
       default: []
-      description: 'Add arguments, like for example `-n`, to the PHP executable'
+      description: 'Add arguments, like for example `-n`, to the PHP executable.'
+      order: 11
     executablePath:
       title: 'PHP-CS-fixer executable path'
       type: 'string'
       default: 'php-cs-fixer'
-      description: 'the path to the `php-cs-fixer` executable'
-    level:
-      title: 'Level'
+      description: 'The path to the `php-cs-fixer` executable.'
+      order: 20
+    rules:
+      title: 'PHP-CS-Fixer Rules'
       type: 'string'
-      enum: ['psr0', 'psr1', 'psr2', 'symfony']
-      default: 'psr2'
-      description: 'for example: psr0, psr1, psr2 or symfony'
-    fixers:
-      title: 'Fixers'
+      default: '@PSR2'
+      description: 'A list of rules (based on php-cs-fixer 2.0), for example: `@PSR2,no_short_echo_tag,indentation_type`. See <https://github.com/FriendsOfPHP/PHP-CS-Fixer#usage> for a complete list. Will be ignored if a config file is used.'
+      order: 21
+    allowRisky:
+      title: 'Allow risky'
+      type: 'boolean'
+      default: false
+      description: 'Option allows you to set whether risky rules may run. Will be ignored if a config file is used.'
+      order: 22
+    pathMode:
+      title: 'PHP-CS-Fixer Path-Mode'
+      type: 'string'
+      default: 'override'
+      enum: ['override', 'intersection']
+      description: 'Specify path mode (can be override or intersection).'
+      order: 23
+    fixerArguments:
+      title: 'PHP-CS-Fixer arguments'
+      type: 'array'
+      default: ['--using-cache=no', '--no-interaction']
+      description: 'Add arguments, like for example `--using-cache=false`, to the PHP-CS-Fixer executable. Run `php-cs-fixer help fix` in your command line, to get a full list of all supported arguments.'
+      order: 24
+    configPath:
+      title: 'PHP-CS-fixer config file path'
       type: 'string'
       default: ''
-      description: 'a list of fixers, for example: `linefeed,short_tag,indentation`. See <http://cs.sensiolabs.org/#usage> for a complete list'
+      description: 'Optionally provide the path to the `.php_cs` config file, if the path is not provided it will be loaded from the root path of the current project.'
+      order: 25
     executeOnSave:
       title: 'Execute on save'
       type: 'boolean'
       default: false
-      description: 'execute PHP CS fixer on save'
+      description: 'Execute PHP CS fixer on save'
+      order: 30
     showInfoNotifications:
       title: 'Show notifications'
       type: 'boolean'
       default: false
-      description: 'show some status informations from the last "fix"'
+      description: 'Show some status informations from the last "fix".'
+      order: 31
 
   activate: (state) ->
     atom.config.observe 'php-cs-fixer.executeOnSave', =>
@@ -53,17 +78,26 @@ module.exports = PhpCsFixer =
     atom.config.observe 'php-cs-fixer.executablePath', =>
       @executablePath = atom.config.get 'php-cs-fixer.executablePath'
 
-    atom.config.observe 'php-cs-fixer.level', =>
-      @level = atom.config.get 'php-cs-fixer.level'
+    atom.config.observe 'php-cs-fixer.configPath', =>
+      @configPath = atom.config.get 'php-cs-fixer.configPath'
 
-    atom.config.observe 'php-cs-fixer.fixers', =>
-      @fixers = atom.config.get 'php-cs-fixer.fixers'
+    atom.config.observe 'php-cs-fixer.allowRisky', =>
+      @allowRisky = atom.config.get 'php-cs-fixer.allowRisky'
+
+    atom.config.observe 'php-cs-fixer.rules', =>
+      @rules = atom.config.get 'php-cs-fixer.rules'
 
     atom.config.observe 'php-cs-fixer.showInfoNotifications', =>
       @showInfoNotifications = atom.config.get 'php-cs-fixer.showInfoNotifications'
 
     atom.config.observe 'php-cs-fixer.phpArguments', =>
       @phpArguments = atom.config.get 'php-cs-fixer.phpArguments'
+
+    atom.config.observe 'php-cs-fixer.fixerArguments', =>
+      @fixerArguments = atom.config.get 'php-cs-fixer.fixerArguments'
+
+    atom.config.observe 'php-cs-fixer.pathMode', =>
+      @pathMode = atom.config.get 'php-cs-fixer.pathMode'
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -97,12 +131,23 @@ module.exports = PhpCsFixer =
 
     args = args.concat [@executablePath, 'fix', filePath]
 
-    if configPath = @findFile(path.dirname(filePath), '.php_cs')
-      args.push '--config-file=' + configPath
+    if @configPath
+      args.push '--config=' + @configPath
+    else if configPath = @findFile(path.dirname(filePath), ['.php_cs', '.php_cs.dist'])
+      args.push '--config=' + configPath
 
     # add optional options
-    args.push '--level=' + @level if @level and not configPath
-    args.push '--fixers=' + @fixers if @fixers and not configPath
+    args.push '--allow-risky=yes' if @allowRisky and not configPath
+    args.push '--rules=' + @rules if @rules and not configPath
+    args.push '--path-mode=' + @pathMode if @pathMode
+
+    if @fixerArguments.length and not configPath
+      if @fixerArguments.length > 1
+        fixerArgs = @fixerArguments
+      else
+        fixerArgs = @fixerArguments[0].split(' ')
+
+      args = args.concat fixerArgs;
 
     # some debug output for a better support feedback
     console.debug('php-cs-fixer Command', command)
@@ -118,8 +163,9 @@ module.exports = PhpCsFixer =
 
     stderr = (output) ->
       if PhpCsFixer.showInfoNotifications
-        # temporary fixing https://github.com/pfefferle/atom-php-cs-fixer/issues/35
-        if (/^Loaded config from/.test(output))
+        if (output.replace(/\s/g,"") == "")
+          # do nothing
+        else if (/^Loaded config/.test(output)) # temporary fixing https://github.com/pfefferle/atom-php-cs-fixer/issues/35
           atom.notifications.addInfo(output)
         else
           atom.notifications.addError(output)

@@ -9,7 +9,7 @@
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
 	<key>Default Bookmark Guid</key>
-	<string>72FF07C5-19E9-4DB2-8A55-8C76811CEDCC</string>
+	<string>BBF4D25E-7D2A-4903-B3F1-D44698E17CEF</string>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
@@ -47,10 +47,14 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>3090 768 620 392 1680 0 3440 1417 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 139 606 456 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>269 230 770 381 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>3003 881 570 452 1680 0 3440 1417 </string>
+	<string>3 61 1676 966 0 0 1680 1027 </string>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
@@ -100,6 +104,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/ek/.dotfiles/iterm</string>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -109,8 +115,10 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-12-15T19:50:43Z</date>
+	<date>2017-02-15T06:33:48Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>ShowFullScreenTabBar</key>
 	<false/>
 	<key>TabStyle</key>
 	<integer>2</integer>
@@ -121,6 +129,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.12</string>
+	<string>3.0.13</string>
 </dict>
 </plist>
