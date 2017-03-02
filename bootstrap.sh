@@ -5,8 +5,7 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
-	rsync
-		--exclude ".DS_Store" \
+	rsync --exclude ".DS_Store" \
 		--exclude ".git/" \
 		--exclude "atom/" \
 		--exclude "bash/" \

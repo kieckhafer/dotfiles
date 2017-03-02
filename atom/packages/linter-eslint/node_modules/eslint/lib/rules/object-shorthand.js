@@ -215,8 +215,8 @@ module.exports = {
         * @returns {Object} A fix for this node
         */
         function makeFunctionShorthand(fixer, node) {
-            const firstKeyToken = node.computed ? sourceCode.getTokens(node).find(token => token.value === "[") : sourceCode.getFirstToken(node.key);
-            const lastKeyToken = node.computed ? sourceCode.getTokensBetween(node.key, node.value).find(token => token.value === "]") : sourceCode.getLastToken(node.key);
+            const firstKeyToken = node.computed ? sourceCode.getFirstToken(node, astUtils.isOpeningBracketToken) : sourceCode.getFirstToken(node.key);
+            const lastKeyToken = node.computed ? sourceCode.getFirstTokenBetween(node.key, node.value, astUtils.isClosingBracketToken) : sourceCode.getLastToken(node.key);
             const keyText = sourceCode.text.slice(firstKeyToken.range[0], lastKeyToken.range[1]);
             let keyPrefix = "";
 
@@ -231,15 +231,15 @@ module.exports = {
                 const tokenBeforeParams = node.value.generator ? sourceCode.getTokenAfter(functionToken) : functionToken;
 
                 return fixer.replaceTextRange([firstKeyToken.range[0], tokenBeforeParams.range[1]], keyPrefix + keyText);
-            } else {
-                const arrowToken = sourceCode.getTokens(node.value).find(token => token.value === "=>");
-                const tokenBeforeArrow = sourceCode.getTokenBefore(arrowToken);
-                const hasParensAroundParameters = tokenBeforeArrow.type === "Punctuator" && tokenBeforeArrow.value === ")";
-                const oldParamText = sourceCode.text.slice(sourceCode.getFirstToken(node.value, node.value.async ? 1 : 0).range[0], tokenBeforeArrow.range[1]);
-                const newParamText = hasParensAroundParameters ? oldParamText : `(${oldParamText})`;
-
-                return fixer.replaceTextRange([firstKeyToken.range[0], arrowToken.range[1]], keyPrefix + keyText + newParamText);
             }
+            const arrowToken = sourceCode.getTokens(node.value).find(token => token.value === "=>");
+            const tokenBeforeArrow = sourceCode.getTokenBefore(arrowToken);
+            const hasParensAroundParameters = tokenBeforeArrow.type === "Punctuator" && tokenBeforeArrow.value === ")";
+            const oldParamText = sourceCode.text.slice(sourceCode.getFirstToken(node.value, node.value.async ? 1 : 0).range[0], tokenBeforeArrow.range[1]);
+            const newParamText = hasParensAroundParameters ? oldParamText : `(${oldParamText})`;
+
+            return fixer.replaceTextRange([firstKeyToken.range[0], arrowToken.range[1]], keyPrefix + keyText + newParamText);
+
         }
 
         /**

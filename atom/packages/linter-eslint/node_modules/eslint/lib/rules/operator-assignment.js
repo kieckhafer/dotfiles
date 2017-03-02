@@ -27,7 +27,7 @@ function isCommutativeOperatorWithShorthand(operator) {
  *     a shorthand form.
  */
 function isNonCommutativeOperatorWithShorthand(operator) {
-    return ["+", "-", "/", "%", "<<", ">>", ">>>"].indexOf(operator) >= 0;
+    return ["+", "-", "/", "%", "<<", ">>", ">>>", "**"].indexOf(operator) >= 0;
 }
 
 //------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ module.exports = {
         * @returns {Token} The operator token in the node
         */
         function getOperatorToken(node) {
-            return sourceCode.getTokensBetween(node.left, node.right).find(token => token.value === node.operator);
+            return sourceCode.getFirstTokenBetween(node.left, node.right, token => token.value === node.operator);
         }
 
         /**

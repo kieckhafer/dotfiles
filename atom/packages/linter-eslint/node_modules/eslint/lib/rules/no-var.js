@@ -273,9 +273,8 @@ module.exports = {
 
             if (
                 !isLoopAssignee(node) &&
-                node.parent.type !== "BlockStatement" &&
-                node.parent.type !== "Program" &&
-                node.parent.type !== "SwitchCase"
+                !(node.parent.type === "ForStatement" && node.parent.init === node) &&
+                !astUtils.STATEMENT_LIST_PARENTS.has(node.parent.type)
             ) {
 
                 // If the declaration is not in a block, e.g. `if (foo) var bar = 1;`, then it can't be fixed.

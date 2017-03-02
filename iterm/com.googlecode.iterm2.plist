@@ -9,7 +9,7 @@
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
 	<key>Default Bookmark Guid</key>
-	<string>BBF4D25E-7D2A-4903-B3F1-D44698E17CEF</string>
+	<string>5D6F4EB9-2587-48BD-B9EB-6F09DB00D968</string>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
@@ -54,7 +54,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>269 230 770 381 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>3 61 1676 966 0 0 1680 1027 </string>
+	<string>0 567 570 452 0 0 1680 1027 </string>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
@@ -115,7 +115,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-02-15T06:33:48Z</date>
+	<date>2017-03-01T04:10:26Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -129,6 +129,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.13</string>
+	<string>3.0.14</string>
 </dict>
 </plist>

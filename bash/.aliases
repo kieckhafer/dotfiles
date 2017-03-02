@@ -54,6 +54,7 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew c
 
 ## Application Specific
 # Reaction
+alias rc="cd ~/Projects/reaction"
 alias m="meteor"
 alias mr="meteor reset"
 alias r="reaction"
@@ -61,4 +62,3 @@ alias rr="meteor reset && reaction"
 alias rrr="reaction reset && reaction"
 alias km="ps aux | grep -ie meteor | awk '{print $2}' | xargs kill -9"
 alias tm="VELOCITY_TEST_PACKAGES=1 meteor test-packages --port 3006 --driver-package velocity:html-reporter"
-alias killit="kill -9 `ps ax | grep node | grep meteor | awk '{print $1}'`"

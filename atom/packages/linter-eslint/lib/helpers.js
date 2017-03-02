@@ -11,8 +11,14 @@ let getDebugInfo = exports.getDebugInfo = (() => {
     const textEditor = atom.workspace.getActiveTextEditor();
     const filePath = textEditor.getPath();
     const packagePath = atom.packages.resolvePackagePath('linter-eslint');
-    // eslint-disable-next-line import/no-dynamic-require
-    const linterEslintMeta = require((0, _path.join)(packagePath, 'package.json'));
+    let linterEslintMeta;
+    if (packagePath === undefined) {
+      // Apparently for some users the package path fails to resolve
+      linterEslintMeta = { version: 'unknown!' };
+    } else {
+      // eslint-disable-next-line import/no-dynamic-require
+      linterEslintMeta = require((0, _path.join)(packagePath, 'package.json'));
+    }
     const config = atom.config.get('linter-eslint');
     const hoursSinceRestart = Math.round(process.uptime() / 3600 * 10) / 10;
     let returnVal;
@@ -107,7 +113,7 @@ let processESLintMessages = exports.processESLintMessages = (() => {
           msgEndCol = endColumn - 1;
         } else {
           // We want msgCol to remain undefined if it was initially so
-          // `rangeFromLineNumber` will give us a range over the entire line
+          // `generateRange` will give us a range over the entire line
           msgCol = typeof column !== 'undefined' ? column - 1 : column;
         }
 
@@ -119,7 +125,7 @@ let processESLintMessages = exports.processESLintMessages = (() => {
             validatePoint(textEditor, msgEndLine, msgEndCol);
             range = [[msgLine, msgCol], [msgEndLine, msgEndCol]];
           } else {
-            range = (0, _atomLinter.rangeFromLineNumber)(textEditor, msgLine, msgCol);
+            range = (0, _atomLinter.generateRange)(textEditor, msgLine, msgCol);
           }
           ret = {
             filePath,
@@ -129,8 +135,8 @@ let processESLintMessages = exports.processESLintMessages = (() => {
 
           if (showRule) {
             const elName = ruleId ? 'a' : 'span';
-            const href = ruleId ? ` href=${(0, _eslintRuleDocumentation2.default)(ruleId).url}` : '';
-            ret.html = `<${elName}${href} class="badge badge-flexible eslint">` + `${ruleId || 'Fatal'}</${elName}> ${(0, _escapeHtml2.default)(message)}`;
+            const href = ruleId ? ` href="${(0, _eslintRuleDocumentation2.default)(ruleId).url}"` : '';
+            ret.html = `${(0, _escapeHtml2.default)(message)} (<${elName}${href}>${ruleId || 'Fatal'}</${elName}>)`;
           } else {
             ret.text = message;
           }
@@ -139,7 +145,7 @@ let processESLintMessages = exports.processESLintMessages = (() => {
           }
         } catch (err) {
           if (!err.message.startsWith('Line number ') && !err.message.startsWith('Column start ')) {
-            // This isn't an invalid point error from `rangeFromLineNumber`, re-throw it
+            // This isn't an invalid point error from `generateRange`, re-throw it
             throw err;
           }
           ret = yield generateInvalidTrace(msgLine, msgCol, msgEndLine, msgEndCol, eslintFullRange, filePath, textEditor, ruleId, message, worker);
@@ -269,7 +275,7 @@ const generateInvalidTrace = (() => {
       severity: 'error',
       html: `${(0, _escapeHtml2.default)(titleText)}. See the trace for details. ` + `<a href="${newIssueURL}">Report this!</a>`,
       filePath,
-      range: (0, _atomLinter.rangeFromLineNumber)(textEditor, 0),
+      range: (0, _atomLinter.generateRange)(textEditor, 0),
       trace: [{
         type: 'Trace',
         text: `Original message: ${ruleId} - ${message}`,

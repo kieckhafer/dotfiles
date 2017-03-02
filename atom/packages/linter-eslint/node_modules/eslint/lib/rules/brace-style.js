@@ -62,7 +62,7 @@ module.exports = {
         function removeNewlineBetween(firstToken, secondToken) {
             const textRange = [firstToken.range[1], secondToken.range[0]];
             const textBetween = sourceCode.text.slice(textRange[0], textRange[1]);
-            const NEWLINE_REGEX = /\r\n|\r|\n|\u2028|\u2029/g;
+            const NEWLINE_REGEX = astUtils.createGlobalLinebreakMatcher();
 
             // Don't do a fix if there is a comment between the tokens
             return fixer => fixer.replaceTextRange(textRange, textBetween.trim() ? null : textBetween.replace(NEWLINE_REGEX, ""));
@@ -144,11 +144,7 @@ module.exports = {
 
         return {
             BlockStatement(node) {
-                if (
-                    node.parent.type !== "BlockStatement" &&
-                    node.parent.type !== "SwitchCase" &&
-                    node.parent.type !== "Program"
-                ) {
+                if (!astUtils.STATEMENT_LIST_PARENTS.has(node.parent.type)) {
                     validateCurlyPair(sourceCode.getFirstToken(node), sourceCode.getLastToken(node));
                 }
             },
