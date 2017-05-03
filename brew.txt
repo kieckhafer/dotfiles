@@ -7,6 +7,7 @@ libksba
 libyaml
 neon
 node
+nvm
 python
 rbenv
 ruby-build
