@@ -1,4 +1,3 @@
-brew-cask
 cask
 docker
 git
@@ -7,6 +6,7 @@ libksba
 libyaml
 neon
 node
+nvm
 python
 rbenv
 ruby-build

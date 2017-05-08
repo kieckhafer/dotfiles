@@ -1,10 +1,17 @@
+adium
 atom
 dropbox
 firefox
 github-desktop
+gitter
 google-chrome
+istat-menus
 iterm2
+jumpcut
+skitch
 sketch
 slack
+sourcetree
 spotify
+transmit
 vlc

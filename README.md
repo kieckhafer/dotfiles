@@ -1,5 +1,5 @@
-# dotfiles
-Self-explanatory. Inspiration from [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/) and [Ara Abcarians](https://github.com/itsmeara/dotfiles/). [Homebrew](http://brew.sh/) and [GNU Stow](https://www.gnu.org/software/stow/) make life easier.
+# dotfiles & application installation
+Self-explanatory. Inspiration from [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/), [Ian Moersen](https://github.com/i-a-n/mac-setup) and [Ara Abcarians](https://github.com/itsmeara/dotfiles/). [Homebrew](http://brew.sh/) and [GNU Stow](https://www.gnu.org/software/stow/) make life easier.
 
 ## Installation
 
