@@ -66,6 +66,7 @@ prompt_git() {
 	fi;
 }
 
+# Reaction Theme
 if tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
 	bold=$(tput bold);
@@ -98,9 +99,9 @@ fi;
 
 # Highlight the user name when logged in as root.
 if [[ "${USER}" == "root" ]]; then
-	userStyle="${violet}";
+	userStyle="${red}";
 else
-	userStyle="${orange}";
+	userStyle="${red}";
 fi;
 
 # Highlight the hostname when connected via SSH.
@@ -114,7 +115,7 @@ fi;
 PS1="\[\033]0;\W\007\]"; # working directory base name
 PS1+="\[${bold}\]\n"; # newline
 PS1+="\[${userStyle}\]\u"; # username
-PS1+="\[${white}\] at ";
+# PS1+="\[${white}\] at ";
 # PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\w"; # working directory full path
