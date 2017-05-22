@@ -1,4 +1,3 @@
-brew-cask
 cask
 docker
 git
