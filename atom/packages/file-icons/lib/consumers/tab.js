@@ -1,7 +1,8 @@
 "use strict";
 
 const {CompositeDisposable, Emitter} = require("atom");
-const FileSystem   = require("../filesystem/filesystem.js");
+const {normalisePath} = require("alhadis.utils");
+const {FileSystem} = require("atom-fs");
 const IconNode     = require("../service/icon-node.js");
 const Options      = require("../options.js");
 
@@ -11,16 +12,14 @@ class Tab{
 	constructor(element, editor){
 		this.element  = element;
 		this.editor   = editor;
-		this.path     = editor.getPath();
+		this.path     = normalisePath(editor.getPath());
 		this.file     = FileSystem.get(this.path);
 		element.itemTitle.classList.add("icon");
-		this.iconNode = new IconNode(this.file, element.itemTitle);
-		this.iconNode.setVisible(Options.tabPaneIcon);
+		this.iconNode = new IconNode(this.file, element.itemTitle, true);
 		
 		this.emitter = new Emitter();
 		this.disposables = new CompositeDisposable(
-			editor.onDidDestroy(_=> this.destroy()),
-			Options.onDidChange("tabPaneIcon", show => this.iconNode.setVisible(show))
+			editor.onDidDestroy(() => this.destroy())
 		);
 	}
 	

@@ -10,8 +10,8 @@ var sep = nodePath.sep;
 function getClientPath(path, options) {
     ok(typeof path === 'string', 'path should be a string');
     options = options || {};
-    var normalizedPath = nodePath.normalize(path);
 
+    var normalizedPath = nodePath.resolve(process.cwd(), path);
     var removeExt = options.removeExt !== false;
 
     var name;

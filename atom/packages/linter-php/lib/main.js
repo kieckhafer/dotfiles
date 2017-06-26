@@ -7,38 +7,10 @@ import { dirname } from 'path';
 
 // Local variables
 const parseRegex = /^(?:Parse|Fatal) error:\s+(.+) in .+?(?: on line |:)(\d+)/gm;
-const phpCheckCache = new Map();
 
 // Settings
 let executablePath;
 let errorReporting;
-
-const testBin = async () => {
-  if (phpCheckCache.has(executablePath)) {
-    return;
-  }
-  const title = 'linter-php: Unable to determine PHP version';
-  const message = `Unable to determine the version of "${executablePath}` +
-    '", please verify that this is the right path to PHP. If you believe you ' +
-    'have fixed this problem please restart Atom.';
-
-  let output;
-  try {
-    output = await helpers.exec(executablePath, ['-v']);
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(e);
-    phpCheckCache.set(executablePath, false);
-    atom.notifications.addError(title, { detail: message });
-  }
-
-  const regex = /PHP (\d+)\.(\d+)\.(\d+)/g;
-  if (!regex.exec(output)) {
-    phpCheckCache.set(executablePath, false);
-    atom.notifications.addError(title, { detail: message });
-  }
-  phpCheckCache.set(executablePath, true);
-};
 
 export default {
   activate() {
@@ -48,13 +20,12 @@ export default {
     this.subscriptions.add(
       atom.config.observe('linter-php.executablePath', (value) => {
         executablePath = value;
-        testBin();
-      })
+      }),
     );
     this.subscriptions.add(
       atom.config.observe('linter-php.errorReporting', (value) => {
         errorReporting = value;
-      })
+      }),
     );
   },
 
@@ -69,14 +40,6 @@ export default {
       scope: 'file',
       lintOnFly: true,
       lint: async (textEditor) => {
-        if (!phpCheckCache.has(executablePath)) {
-          await testBin();
-        }
-        if (!phpCheckCache.get(executablePath)) {
-          // We don't have a valid PHP version, don't update messages
-          return null;
-        }
-
         const filePath = textEditor.getPath();
         const fileText = textEditor.getText();
 
@@ -89,12 +52,16 @@ export default {
           parameters.push('--define', 'error_reporting=E_ALL');
         }
 
-        const [projectPath] = atom.project.relativizePath(filePath);
         const execOptions = {
           stdin: fileText,
-          cwd: projectPath !== null ? projectPath : dirname(filePath),
           ignoreExitCode: true,
         };
+
+        if (filePath !== null) {
+          // Only specify a CWD if the file has been saved
+          const [projectPath] = atom.project.relativizePath(filePath);
+          execOptions.cwd = projectPath !== null ? projectPath : dirname(filePath);
+        }
 
         const output = await helpers.exec(executablePath, parameters, execOptions);
 
@@ -110,7 +77,7 @@ export default {
           messages.push({
             type: 'Error',
             filePath,
-            range: helpers.rangeFromLineNumber(textEditor, line),
+            range: helpers.generateRange(textEditor, line),
             text: match[1],
           });
           match = parseRegex.exec(output);

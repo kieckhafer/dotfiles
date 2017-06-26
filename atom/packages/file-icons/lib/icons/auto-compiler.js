@@ -2,10 +2,10 @@
 
 const path = require("path");
 const {CompositeDisposable, Disposable, Task} = require("atom");
-const FileSystem   = require("../filesystem/filesystem.js");
+const {FileSystem} = require("atom-fs");
 const Options      = require("../options.js");
 const Storage      = require("../storage.js");
-const Log          = require("../log.js");
+const {log}        = require("../debug.js");
 const UI           = require("../ui.js");
 
 const COMPILER_PATH = path.join(__dirname, "..", "..", "bin", "compile");
@@ -131,7 +131,7 @@ class AutoCompiler{
 			case ERROR_BAD_SOURCE_DATA: error = ["Malformed CoffeeScript source"]; break;
 		}
 		const [message = "Compile error", detail] = error;
-		Log.error("COMPILER", "Failed - " + message, {
+		log("COMPILER: Failed - " + message, {
 			compilerPath: COMPILER_PATH,
 			sourceFile: source,
 			targetFile: source,

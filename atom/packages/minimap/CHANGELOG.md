@@ -1,3 +1,47 @@
+<a name="v4.28.2"></a>
+# v4.28.2 (2017-05-02)
+
+## :bug: Bug Fixes
+
+- Fix access to deleted editor in attached callback ([03b8f952](https://github.com/atom-minimap/minimap/commit/03b8f952b63c481db466e48863033c3397a09881), [#590](https://github.com/atom-minimap/minimap/issues/590), [#591](https://github.com/atom-minimap/minimap/issues/591), [#592](https://github.com/atom-minimap/minimap/issues/592))
+
+<a name="v4.28.0"></a>
+# v4.28.0 (2017-04-27)
+
+## :sparkles: Features
+
+- Kite promotion ([16c11d82](https://github.com/atom-minimap/minimap/commit/16c11d82b889ce1260342e4fa7d6d1905c0fde45))
+
+<a name="v4.27.1"></a>
+# v4.27.1 (2017-04-05)
+
+## :bug: Bug Fixes
+
+- Fix flickers on retina screen with absolute mode adjustable height ([a81abbea](https://github.com/atom-minimap/minimap/commit/a81abbea715d329691272b3cb5d13317a50d3913))
+- Enable pointer events for visible area in adjusted absolute mode ([8210e1e9](https://github.com/atom-minimap/minimap/commit/8210e1e915fe94caf08066543e86293418fe7ce8), [#564](https://github.com/atom-minimap/minimap/issues/564))
+
+<a name="v4.27.0"></a>
+# v4.27.0 (2017-03-30)
+
+## :sparkles: Features
+
+- Implement configurable minimap redraw delay ([c1ec247d](https://github.com/atom-minimap/minimap/commit/c1ec247d0f94497d9bdfaaded9d2315d2767d1e0))
+
+## :racehorse: Performances
+
+- Epic performance boost for large files ([07e65ed8](https://github.com/atom-minimap/minimap/commit/07e65ed88d31a36d49749cc1b02c1fef993faa28))
+
+<a name="v4.26.8"></a>
+# v4.26.8 (2017-01-31)
+
+## :sparkles: Features
+
+- Add link to the quick-highlight integration ([7d417572](https://github.com/atom-minimap/minimap/commit/7d417572c5d61d9d6c11eae97f78dd515f4c4e0c))
+
+## :bug: Bug Fixes
+
+- Fix access to a text editor without component ([c4cd1508](https://github.com/atom-minimap/minimap/commit/c4cd1508e2fd86ebd4e023a6a483361566638377), [#551](https://github.com/atom-minimap/minimap/issues/551))
+
 <a name="v4.26.7"></a>
 # v4.26.7 (2017-01-18)
 

@@ -1,6 +1,6 @@
 "use strict";
 
-const {caseKludge, escapeRegExp, forceNonCapturing, fuzzyRegExp, isNumeric, isRegExp} = require("../utils/general.js");
+const {caseKludge, escapeRegExp, forceNonCapturing, fuzzyRegExp, isNumeric, isRegExp} = require("alhadis.utils");
 
 
 /**
@@ -41,10 +41,10 @@ class IconDefinition{
 		if(props.matchPath)
 			this.matchPath = true;
 		
-		// Improve performance by forcing all groups to be non-capturing
+		// Improve performance by forcing groups to be non-capturing
 		for(const name in this){
 			const value = this[name];
-			if(isRegExp(value))
+			if(isRegExp(value) && !/\\[1-9]/.test(value.source.replace(/\\[^1-9]/g, "")))
 				this[name] = forceNonCapturing(value);
 		}
 	}
@@ -153,8 +153,8 @@ class IconDefinition{
 			const keyPattern = this.lang && !this.lang.ignoreCase
 				? caseKludge(key, !noFuzz)
 				: noFuzz
-					? fuzzyRegExp(key, String)
-					: escapeRegExp(key);
+					? escapeRegExp(key)
+					: fuzzyRegExp(key, String);
 			
 			const source = this.lang
 				? `^${keyPattern}$|${this.lang.source}`

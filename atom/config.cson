@@ -29,7 +29,6 @@
   editor:
     autoIndentOnPaste: false
     backUpBeforeSaving: true
-    fontSize: 13
     invisibles: {}
     preferredLineLength: 200
     showIndentGuide: true
@@ -49,8 +48,8 @@
     enableSelectionBorder: true
     enableUnderline: true
     underline: "dotted"
-  linter:
-    showErrorPanel: false
+  linter: {}
+  "linter-ui-default": {}
   minimap: {}
   "one-dark-ui": {}
   personalAccessToken: "70a342067a20c3ed1d0b6e1d60dfb63e541c8737"
@@ -62,6 +61,8 @@
     _analyticsUserId: "16114532-395a-48a6-9139-4abb9646f99f"
   tabs:
     usePreviewTabs: true
+  "tree-view":
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
 ".html.php.text":
