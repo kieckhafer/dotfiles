@@ -41,7 +41,3 @@ Thumbs.db
 .sass-cache/
 .codekit-config.json
 config.codekit
-
-# atom #
-########
-/atom
