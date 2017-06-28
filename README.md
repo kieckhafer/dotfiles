@@ -10,7 +10,7 @@ Self-explanatory. Inspiration from [Mathias Bynens](https://github.com/mathiasby
 
 **2) Clone this repo:**  
 ```
-cd ~/.dotfiles
+cd ~/
 ```  
 ```
 git clone git@github.com:kieckhafer/dotfiles.git
