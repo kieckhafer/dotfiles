@@ -3,12 +3,23 @@ Self-explanatory. Inspiration from [Mathias Bynens](https://github.com/mathiasby
 
 ## Installation
 
-**1) Install Homebrew:**  
+**1) Prep MacOS:**
+
+- Install Xcode CLI
+```
+xcode-select --install
+```
+- Show hidden files in Finder
+```
+defaults write com.apple.finder AppleShowAllFiles YES
+```
+
+**2) Install Homebrew:**  
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-**2) Clone this repo:**  
+**3) Clone this repo:**  
 ```
 cd ~/
 ```  
@@ -16,7 +27,7 @@ cd ~/
 git clone git@github.com:kieckhafer/dotfiles.git
 ```
 
-**3) Install Brew software**  
+**4) Install Brew software**  
 ```
 brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
 ```  
@@ -30,7 +41,7 @@ cat brew.txt | xargs brew install
 brew tap caskroom/versions
 ```
 
-**4. Setup Symlinks via Stow**  
+**5) Setup Symlinks via Stow**  
 ```
 cd ~/.dotfiles
 ```  
@@ -41,12 +52,12 @@ stow bash
 stow git
 ```
 
-**5. Install Brew Casks**  
+**6) Install Brew Casks**  
 ```
 cat brew-cask.txt | xargs brew cask install
 ```
 
-**6. Install global npm packages**  
+**7) Install global npm packages**  
 ```
 cat npm.txt | xargs npm install -g
 ```
